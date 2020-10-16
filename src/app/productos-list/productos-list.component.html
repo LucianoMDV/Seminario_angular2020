@@ -1,0 +1,26 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Precio</th>
+            <th>Stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><img width="150" [src]="producto.imagen" [alt]="producto.nombre"></td>
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.tipo}}</td>
+            <td>{{producto.precio}}</td>
+            <td>{{producto.stock}}</td>
+        </tr>
+        <tr>
+            <td>Budin</td>
+            <td>vainilla</td>
+            <td>100.00</td>
+            <td>5</td>
+        </tr>
+    </tbody>
+</table>
