@@ -9,18 +9,16 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
+        <tr *ngFor="let producto of productos" [ngClass]="{ 'oferta': producto.oferta }">
             <td><img width="150" [src]="producto.imagen" [alt]="producto.nombre"></td>
             <td>{{producto.nombre}}</td>
             <td>{{producto.tipo}}</td>
-            <td>{{producto.precio}}</td>
-            <td>{{producto.stock}}</td>
-        </tr>
-        <tr>
-            <td>Budin</td>
-            <td>vainilla</td>
-            <td>100.00</td>
-            <td>5</td>
+            <td>{{producto.precio | currency}}</td>
+            <td>
+                <span class="badge badge-warning" *ngIf="producto.stock == 0">
+                    SIN STOCK
+                </span>
+            </td>
         </tr>
     </tbody>
 </table>
