@@ -5,4 +5,5 @@ export interface Producto {
     stock : number;
     imagen : string;
     oferta: boolean;
+    cantidad: number;
 }

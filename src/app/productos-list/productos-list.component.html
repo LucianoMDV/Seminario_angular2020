@@ -1,3 +1,4 @@
+<h3>Lista de Poroductos</h3>
 <table class="table">
     <thead>
         <tr>
@@ -6,18 +7,42 @@
             <th>Tipo</th>
             <th>Precio</th>
             <th>Stock</th>
+            <th>Compra</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let producto of productos" [ngClass]="{ 'oferta': producto.oferta }">
-            <td><img width="150" [src]="producto.imagen" [alt]="producto.nombre"></td>
+            <td><img class="img-thumbnail" width="100" [src]="producto.imagen" [alt]="producto.nombre"></td>
             <td>{{producto.nombre}}</td>
             <td>{{producto.tipo}}</td>
             <td>{{producto.precio | currency}}</td>
             <td>
-                <span class="badge badge-warning" *ngIf="producto.stock == 0">
-                    SIN STOCK
-                </span>
+                <ng-container *ngIf="producto.stock == 0; then sinStock; else enStock"></ng-container>
+
+                <ng-template #sinStock>
+                    <span class="badge badge-warning">
+                        SIN STOCK 
+                    </span>
+                </ng-template>
+                <ng-template #enStock>
+                    <span class="badge badge-primary">
+                        EN STOCK
+                    </span>
+                </ng-template>
+            </td>
+            <td>
+                <button class="btn btn-primary btn-sm" (click)="downCantidad(producto)">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-dash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                    </svg>
+                </button>
+                <!-- <span class="m-1">{{producto.cantidad}}</span> -->
+                <input type="text" [(ngModel)]="producto.cantidad" (keyup)="onChangeCantidad($event, producto)">
+                <button class="btn btn-primary btn-sm" (click)="upCantidad(producto)">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                    </svg>
+                </button>
             </td>
         </tr>
     </tbody>
