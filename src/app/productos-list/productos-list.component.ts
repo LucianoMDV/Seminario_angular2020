@@ -42,27 +42,8 @@ export class ProductosListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  upCantidad(producto: Producto): void {
-    if (producto.cantidad < producto.stock) {
-      producto.cantidad++;
-    }
-  }
-  downCantidad(producto: Producto): void {
-    if(producto.cantidad > 0) {
-      producto.cantidad--;
-    }
-  }
-
-  /*
-  *terinar de ver como es controlar que solo escriba numeros
-  *quedo a terminar de hacer esto por ahora no hace nada de lo que deberia
-  *que es que solo el usuario pueda escribir numeros
-  */
-  onChangeCantidad(event, producto: Producto): void {
-    if (/^\d$/.test(event.key)) {
-      console.log(event.key);
-      event.preventDefault();
-    }
+  maxAlcanzado(m: string): void {
+    alert(m);
   }
 
 }

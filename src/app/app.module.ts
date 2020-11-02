@@ -10,13 +10,15 @@ import { DulcineaHomeComponent } from './dulcinea-home/dulcinea-home.component';
 import { DulcineaContactoComponent } from './dulcinea-contacto/dulcinea-contacto.component';
 
 import { AppRoutingModule } from './app-routing.module';
+import { InputIntegerComponent } from './input-integer/input-integer.component';
 @NgModule({
   declarations: [
     AppComponent,
     ProductosListComponent,
     CarritoComponent,
     DulcineaHomeComponent,
-    DulcineaContactoComponent
+    DulcineaContactoComponent,
+    InputIntegerComponent,
   ],
   imports: [
     BrowserModule,
