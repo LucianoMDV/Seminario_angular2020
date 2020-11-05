@@ -7,6 +7,7 @@
             <th>Tipo</th>
             <th>Precio</th>
             <th>Stock</th>
+            <th>Cantidad</th>
             <th>Compra</th>
         </tr>
     </thead>
@@ -32,7 +33,9 @@
             </td>
             <td>
                 <app-input-integer [(cantidad)]="producto.cantidad" [max]="producto.stock" *ngIf="producto.stock" (maxAlcanzado)="maxAlcanzado($event)"></app-input-integer>
-                Cant: {{producto.cantidad}}
+            </td>
+            <td>
+                <button type="button" class="btn btn-primary" (click)="addToCart(producto)">Comprar</button>
             </td>
         </tr>
     </tbody>

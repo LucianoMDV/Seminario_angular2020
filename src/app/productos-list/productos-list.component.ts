@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DulcineaCarritoService } from '../dulcinea-carrito.service';
 import { Producto } from './Producto';
 
 @Component({
@@ -37,13 +38,22 @@ export class ProductosListComponent implements OnInit {
       cantidad: 0,
     }
 ];
-  constructor() { }
+
+  constructor(private cart: DulcineaCarritoService) {
+   }
 
   ngOnInit(): void {
   }
 
   maxAlcanzado(m: string): void {
     alert(m);
+  }
+
+  addToCart(producto): void {
+    this.cart.addToCart(producto);
+    producto.stock -= producto.cantidad;
+    producto.cantidad = 0;
+
   }
 
 }
